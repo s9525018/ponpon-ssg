@@ -1,0 +1,17 @@
+{% set block = promotraveldiscount %}
+<section id="promo-travel-discount" class="promo-travel-discount">
+    <div class="section-header">
+        <img src="{{ block.titleImage }}" alt="{{ block.titleAlt }}">
+    </div>
+    <div class="product-grid">
+        <div class="ptd-container">
+            {% for item in block.items %}
+                <div class="ptd-item {{ item.itemClass }}">
+                    <a id="{{ item.trackingId }}" target="_blank" href="{{ item.link }}">
+                        <img src="{{ item.image }}" alt="{{ item.alt }}">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

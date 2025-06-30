@@ -1,0 +1,20 @@
+{# 步驟 1: 和其他成功的組件一樣，先用 'set' 把數據賦值給一個局部變數 'block' #}
+{% set block = brandhighlights %}
+
+<section id="brand-highlights" class="brand-highlights">
+    <div class="section-header">
+        {# 假設這個區塊的標題圖檔名是 bd-section-title.png #}
+        <img src="/images/bd-section-title.png" alt="品牌活動">
+    </div>
+    <div class="brand-grid">
+        {# 步驟 2: 現在，我們遍歷 'block' 這個變數，而不是直接用全域的 'brandhighlights' #}
+        {% for brand in block %}
+            <a class="brand-item" id="{{ brand.trackingId }}" href="{{ brand.link }}" target="_blank" title="{{ brand.name }}">
+                <h3 class="brand-title">{{ brand.name }}</h3>
+                <div class="brand-desc">{{ brand.description }}</div>
+                <div class="brand-image"><img src="{{ brand.imageUrl }}" alt="{{ brand.name }}"></div>
+                <div class="shop-now-btn">SHOP NOW</div>
+            </a>
+        {% endfor %}
+    </div>
+</section>

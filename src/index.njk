@@ -1,0 +1,54 @@
+---
+layout: layouts/base.njk
+title: PonPon-SSG v1.0 - 全自動化活動頁
+---
+
+<main>
+  {# 引入主 Banner (靜態區塊) #}
+  {% include "blocks/mainbanner.njk" %}
+
+  {# --- 以下是數據驅動的區塊 --- #}
+  {# 檔名已根據你的專案進行校對 #}
+
+  {# 處理 coupon-container #}
+  {% if ponponData.couponcontainer %}
+    {% set couponcontainer = ponponData.couponcontainer %}
+    {% include "blocks/coupon-container.njk" %}
+  {% endif %}
+
+  {# 處理 promo-travel-discount #}
+  {% if ponponData.promotraveldiscount %}
+    {% set promotraveldiscount = ponponData.promotraveldiscount %}
+    {% include "blocks/promo-travel-discount.njk" %}
+  {% endif %}
+
+  {# 處理 hot-recommend #}
+  {% if ponponData.hotrecommend %}
+    {% set hotrecommend = ponponData.hotrecommend %}
+    {% include "blocks/hot-recommend.njk" %}
+  {% endif %}
+
+  {# 處理 suncare-promo #}
+  {% if ponponData.suncarepromo %}
+    {% set suncarepromo = ponponData.suncarepromo %}
+    {% include "blocks/suncare-promo.njk" %}
+  {% endif %}
+
+  {# 處理 summer-style-sale #}
+  {% if ponponData.summerstylesale %}
+    {% set summerstylesale = ponponData.summerstylesale %}
+    {% include "blocks/summer-style-sale.njk" %}
+  {% endif %}
+
+  {# 處理 brand-highlights #}
+  {% if ponponData.brandhighlights %}
+    {% set brandhighlights = ponponData.brandhighlights %}
+    {% include "blocks/brand-highlights.njk" %}
+  {% endif %}
+
+  {# 處理 event-highlights #}
+  {% if ponponData.eventhighlights %}
+    {% set eventhighlights = ponponData.eventhighlights %}
+    {% include "blocks/event-highlights.njk" %}
+  {% endif %}
+</main>

@@ -1,0 +1,1137 @@
+/* 全局樣式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans TC", "Microsoft YaHei", "微軟雅黑", Arial, sans-serif;
+    background-repeat: repeat;
+    background-size: 100% auto;
+    background-color: #5f4aff;
+    background-image: url(../images/bg.jpg);
+    color: #333;
+}
+
+.desktop{
+	display: block;
+}
+.mobile{
+	display: none;
+}
+
+/* 主要顏色變量 */
+:root {
+    --red: red;
+    --purple: #6225c6;
+    --cream: #fff4c8;
+    --primary-gray: #cccccc;
+    --secondary-gray: #666666;
+	--white: #ffffff;
+    --black: #000;
+    --brown: #ccc3ba;
+}
+
+/* 背景分隔線 */
+.section-divider img {
+    display: block;
+    margin: -1px auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 偶數分隔線上下顛倒 */
+.section-divider:nth-of-type(2) img,
+.section-divider:nth-of-type(4) img,
+.section-divider:nth-of-type(6) img,
+.section-divider:nth-of-type(8) img {
+    transform: scaleY(-1);
+}
+
+/* 商品圖片容器 */
+.product-image {
+    width: 100%;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+}
+
+/* 商品信息樣式 */
+.product-title{
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--black);
+}
+
+.product-desc {
+    font-size: 14px;
+    color: var(--secondary-gray);
+    margin-bottom: 8px;
+}
+
+
+/* Shop Now 按鈕 */
+.shop-now-btn {
+    font-size: 20px;
+    background: var(--black);
+    color: var(--white);
+    text-decoration: none;
+    padding: 15px 30px;
+    display: inline-block;
+    margin-top: auto;
+    transition: all 0.3s ease;
+}
+
+/* 按鈕定義 */
+
+.more-button {
+    left: 50%;          /* 將按鈕左邊緣移到父元素中心 */
+    transform: translateX(-50%);  /* 將按鈕向左移動自身寬度的一半 */
+    font-family: "Microsoft YaHei", "微軟雅黑", Arial, sans-serif;
+    font-weight: 500;
+    color: var(--white);
+    padding: 20px 30px;
+    font-size: 24px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 100px;
+    background: linear-gradient(35deg, #633afa, #f463f8);
+
+}
+
+.more-button:hover {
+    background: linear-gradient(35deg, #f463f8, #633afa);
+}
+
+.more-button span{
+    color: var(--cream);
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.more-products {
+    position: relative;
+    text-align: center;  /* 添加文字置中 */
+}
+
+
+/* 主要內容區域 */
+main {
+    margin: -2% auto 0;
+}
+
+/* 標題區域樣式 */
+.section-header {
+    text-align: center;
+}
+
+.section-header img {
+    max-width: 100%;
+    padding: 0 20px;
+    height: auto;
+    width: fit-content;
+}
+
+.coupon-container {
+    display: grid;
+    grid-template-areas: 
+        "item1 item2 item3 item4"
+        "item5 item5 item5 item6";
+    gap: 20px;
+    max-width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.coupon-item {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 10px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+    text-align: center;
+}
+
+.coupon-item.item1 { grid-area: item1; }
+.coupon-item.item2 { grid-area: item2; }
+.coupon-item.item3 { grid-area: item3; }
+.coupon-item.item4 { grid-area: item4; }
+.coupon-item.item5 { grid-area: item5; }
+.coupon-item.item6 { grid-area: item6; }
+
+.coupon-item.item1, .coupon-item.item2, .coupon-item.item3, .coupon-item.item4, .coupon-item.item5, .coupon-item.item6 {
+    border-radius: 70px;
+}
+
+/* 優惠券區塊樣式 */
+.ev-618shopping {
+    margin-top: -37%;
+    padding: 5% 0;
+}
+
+.coupon-item {
+    position: relative;
+    width: 100%; /* 設定優惠券寬度 */
+    margin: 0 auto;
+    border-radius: 25%;
+    box-shadow: 0 10px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+    text-align: center;
+    /*border: 1px solid var(--black);*/
+}
+
+.coupon-item img {
+    width: 100%;
+    display: block;
+}
+
+/* 按鈕共同樣式 */
+.coupon-item a {
+    display: block;
+    text-decoration: none;
+    margin: 7px 20px;
+    border-radius: 100px;
+    transition: all 0.3s ease;
+}
+
+.coupon-item .shop-now-btn:hover {
+    background: var(--purple);
+}
+
+.coupon-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    transform: translateY(50%);
+}
+
+.detail-btn {
+    color: var(--black);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.detail-btn:hover {
+    color: var(--black);
+}
+
+/* 商品網格樣式 */
+.product-grid {
+    display: grid;
+    padding: 20px 0;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 65px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.promo-mens-style {
+    padding: 60px 0;
+}
+
+.pms-item {
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.pms-item img{
+    width: 100%;
+    height: 100%;
+}
+
+.pms-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 預設隱藏所有 pms-container */
+.pms-container{
+    display: none;
+}
+
+.pms-container.active {
+    gap: 20px;
+    display: grid;
+    grid-template-areas: 
+        "item1 item2 item3"
+        "item1 item4 item5";
+}
+
+.pms-container .item1 {
+    grid-area: item1; /* 第一個商品佔滿兩列 */
+}
+
+.pms-container .item2 {
+    grid-area: item2; /* 第二個商品 */
+}
+
+.pms-container .item3 {
+    grid-area: item3; /* 第三個商品 */
+}
+
+.pms-container .item4 {
+    grid-area: item4; /* 右側第一個商品佔滿兩列 */
+}
+
+.pms-container .item5 {
+    grid-area: item5; /* 右側第二個商品 */
+}
+
+.men-tab-group {
+    display: flex;
+    justify-content: center; /* 水平置中 */
+    gap: 16px;
+    margin-bottom: 50px;
+}
+
+.men-tab {
+    padding: 8px 32px;
+    border: 2px solid #111;
+    border-radius: 50px;
+    background: transparent;
+    color: #111;
+    font-size: 1.5rem;
+    font-family: 'Noto Serif TC', serif;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-weight: bold;
+}
+
+.men-tab.active {
+    background: #111;
+    color: #fff;
+    border: 2px solid #111;
+}
+
+.promo-womens-style {
+    padding: 60px 0;
+}
+
+.pws-item {
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.pws-item img{
+    width: 100%;
+    height: 100%;
+}
+
+.pws-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 預設隱藏所有 pms-container */
+.pws-container{
+    display: none;
+}
+
+.pws-container.active {
+    gap: 20px;
+    display: grid;
+    grid-template-areas: 
+        "item1 item2 item3"
+        "item1 item4 item5";
+}
+
+.pws-container .item1 {
+    grid-area: item1; /* 第一個商品佔滿兩列 */
+}
+
+.pws-container .item2 {
+    grid-area: item2; /* 第二個商品 */
+}
+
+.pws-container .item3 {
+    grid-area: item3; /* 第三個商品 */
+}
+
+.pws-container .item4 {
+    grid-area: item4; /* 右側第一個商品佔滿兩列 */
+}
+
+.pws-container .item5 {
+    grid-area: item5; /* 右側第二個商品 */
+}
+
+.women-tab-group {
+    display: flex;
+    justify-content: center; /* 水平置中 */
+    gap: 16px;
+    margin-bottom: 50px;
+}
+
+.women-tab {
+    padding: 8px 32px;
+    border: 2px solid #111;
+    border-radius: 50px;
+    background: transparent;
+    color: #111;
+    font-size: 1.5rem;
+    font-family: 'Noto Serif TC', serif;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-weight: bold;
+}
+
+.women-tab.active {
+    background: #111;
+    color: #fff;
+    border: 2px solid #111;
+}
+
+.promo-travel-discount {
+    padding: 60px 0;
+}
+
+.promo-travel-discount .product-grid {
+    gap: 14px;
+    width: 100%;
+}
+
+.promo-travel-discount .ptd-item {
+    overflow: hidden;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 60px;
+    transition: transform 0.3s;
+}
+
+.promo-travel-discount .ptd-item:hover {
+    transform: translateY(-5px);
+}
+
+.promo-travel-discount .ptd-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 定義網格區域 */
+.ptd-container {
+    gap: 20px;
+    display: grid;
+    grid-template-areas: 
+        "item1 item2 item4 item6"
+        "item1 item3 item5 item7";
+}
+
+.ptd-container .item1 {
+    grid-area: item1; 
+}
+
+.ptd-container .item2 {
+    grid-area: item2;
+}
+
+.ptd-container .item3 {
+    grid-area: item3;
+}
+
+.ptd-container .item4 {
+    grid-area: item4;
+}
+
+.ptd-container .item5 {
+    grid-area: item5;
+}
+
+.ptd-container .item6 {
+    grid-area: item6; 
+}
+
+.ptd-container .item7 {
+    grid-area: item7; 
+}
+
+.promo-style-sale {
+    padding: 60px 0;
+}
+
+.add-container {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.add-container .add-item {
+    overflow: hidden;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 40px;
+    transition: transform 0.3s;
+}
+
+.add-container .add-item:hover {
+    transform: translateY(-5px);
+}
+
+.addon-deal .section-header p {
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    padding: 1rem 1rem 0;
+}
+
+.summer-style-sale {
+    padding: 60px 0 100px;
+    position: relative;
+}
+
+.summer-style-sale .sss-item {
+    overflow: hidden;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 60px;
+    transition: transform 0.3s;
+}
+
+.summer-style-sale .sss-item:hover {
+    transform: translateY(-5px);
+}
+
+.summer-style-sale .sss-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 定義網格區域 */
+.sss-container {
+    gap: 20px;
+    display: grid;
+    grid-template-areas: 
+        "item1 item3 item4 item5"
+        "item2 item3 item4 item6";
+}
+
+.sss-container .item1 {
+    grid-area: item1; 
+}
+
+.sss-container .item2 {
+    grid-area: item2;
+}
+
+.sss-container .item3 {
+    grid-area: item3;
+}
+
+.sss-container .item4 {
+    grid-area: item4;
+}
+
+.sss-container .item5 {
+    grid-area: item5;
+}
+
+.sss-container .item6 {
+    grid-area: item6; 
+}
+
+.suncare-promo {
+    padding: 60px 0;
+}
+
+.suncare-promo .section-subheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 0;
+    position: relative;
+}
+
+.suncare-promo .section-title-image {
+    position: absolute;
+    width: 100%;
+    display: flex;           /* 使用 flex 布局 */
+    justify-content: center; /* 水平置中 */
+    align-items: center;     /* 垂直置中 */
+}
+
+.suncare-promo .section-title-image img {
+    max-width: 100%;
+    height: auto;
+    width: fit-content;
+}
+
+.suncare-promo .btn-see-all {
+    position: absolute;
+    padding: 8px 20px 8px 12px; /* 調整左邊距以容納三角形icon */
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.3s;
+    position: absolute;
+    right: 0;
+}
+
+.suncare-promo .btn-see-all::after {
+    content: '';
+    position: absolute;
+    right: 5px; /* 調整三角形icon的位置 */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid #fff; /* 三角形icon的樣式 */
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+.suncare-promo .sp-item {
+    overflow: hidden;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 60px;
+    transition: transform 0.3s;
+}
+
+.suncare-promo .sp-item:hover {
+    transform: translateY(-5px);
+}
+
+.sp-container {
+    max-width: 1280px;
+    margin: 0 auto 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 四欄 */
+    gap: 20px;
+}
+
+.sp-container .product-content {
+    width: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hot-recommend {
+    padding: 60px 0;
+}
+
+.hot-recommend .hr-item {
+    overflow: hidden;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 60px;
+    transition: transform 0.3s;
+}
+
+.hot-recommend .hr-item:hover {
+    transform: translateY(-5px);
+}
+
+.hot-recommend .hr-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hr-container {
+    gap: 20px;
+    display: grid;
+    grid-template-areas: 
+        "item1 item4 item4 item6"
+        "item2 item4 item4 item7"
+        "item3 item5 item5 item7";
+}
+
+.hr-container .item1 {
+    grid-area: item1; 
+}
+
+.hr-container .item2 {
+    grid-area: item2;
+}
+
+.hr-container .item3 {
+    grid-area: item3;
+}
+
+.hr-container .item4 {
+    grid-area: item4;
+}
+
+.hr-container .item5 {
+    grid-area: item5;
+}
+
+.hr-container .item6 {
+    grid-area: item6; 
+}
+
+.hr-container .item7 {
+    grid-area: item7; 
+}
+
+/* 確保圖片等比縮放且不扭曲 */
+.item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 等比縮放，不裁切或扭曲 */
+}
+
+.addon-deal {
+    padding: 60px 0;
+}
+
+/* 品牌商品展示區塊 */
+
+.brand-highlights {
+    padding: 80px 0;
+}
+
+.brand-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.brand-item {
+    background: var(--white);
+    text-align: center;
+    padding-top: 30px;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    color: var(--black);
+    position: relative; /* 添加相對定位 */
+    overflow: hidden; /* 防止標籤超出容器 */
+}
+
+.brand-item:nth-child(3)::before, .brand-item:nth-child(5)::before {
+    content: '線上獨家';
+    position: absolute;
+    top: 15px;
+    right: -40px;
+    background: var(--red);
+    color: var(--white);
+    padding: 8px 40px;
+    transform: rotate(45deg);
+    font-size: 13px;
+    font-weight: lighter;
+    z-index: 1; /* 確保標籤在圖片上層 */
+}
+
+.brand-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 品牌標題 */
+.brand-title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* 品牌描述 */
+.brand-desc {
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: var(--secondary-gray);
+    margin-bottom: 20px;
+}
+
+/* 商品圖片容器 */
+.brand-image {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.brand-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+
+/* Event Highlights 區塊 */
+.event-highlights {
+    padding: 80px 0;
+}
+
+/* 活動卡片網格容器 */
+.event-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* 活動卡片 */
+.event-card {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+/* 卡片懸停效果 */
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* 圖片容器 */
+.event-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+}
+
+/* 內容區域 */
+.event-content {
+    padding: 20px;
+    text-align: center;
+    background: var(--white);
+}
+
+/* 活動標題 */
+.event-title {
+    color: var(--primary-red);
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* 活動副標題 */
+.event-subtitle {
+    color: var(--secondary-gray);
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+/* 查看更多按鈕 */
+.event-cta {
+    background: var(--black);
+    color: var(--white);
+    padding: 10px 18px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+/* 箭頭圖標 */
+.event-cta::after {
+    content: '›';
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+
+
+/* 響應式調整 */
+@media screen and (max-width: 1440px) {
+    .coupon-container {
+        grid-template-areas: 
+        "item1 item2 item3"
+        "item4 item6 1fr"
+        "item5 item5 item5";
+    }
+    .coupon-item .discount {
+        font-size: 22px;
+        margin: 10px 0;
+    }
+    .coupon-item .action-btn,
+    .coupon-item .info-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    .section-header img {
+        padding: 0 50px;
+    }
+    .action-button{
+        width: fit-content;
+        padding: 1vw 3vw;
+        font-size: 1.6vw;
+    }
+    .coupon-container, .sp-container, .sss-container, .hr-container, .pms-container.active, .pws-container.active, .ptd-container {
+        gap: 15px;
+    }
+
+}
+
+@media screen and (max-width: 1024px) {
+    .desktop{
+		display: none;
+	}
+	.mobile{
+		display: block;
+	}
+    .ev-618shopping {
+        margin-top: -20%;
+    }
+    .section-header img {
+        padding: 0;
+    }
+    .product-grid {
+        padding: 40px 20px;
+    }
+    .coupon-container, .sp-container, .sss-container, .hr-container, .pms-container.active, .pws-container.active, .ptd-container {
+        gap: 10px;
+    }
+    .shop-now-btn {
+        font-size: 2vw;
+        padding: 1.2vw 3vw;
+    }
+    .coupon-item a {
+        margin: 0.5vw;
+    }
+    .add-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .brand-grid {
+        gap: 10px;
+    }
+    .event-grid {
+        gap: 10px;
+    }
+    .brand-title {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .more-button {
+        padding: 2vw 3vw;
+        font-size: 3.2vw;
+        margin: 0.5vw;
+    }
+
+    .more-button span {
+        font-size: 3.6vw;
+    }
+
+    .more-products {
+        margin-top: 3vw;
+    }
+
+    .section-subtitle img {
+        padding: 0 0 5px 0;
+    }
+
+    .action-button {
+        width: fit-content;
+        padding: 1.5vw 5vw;
+        font-size: 2.6vw;
+    }
+    
+    .coupon-container {
+        grid-template-areas: 
+        "item1 item2"
+        "item3 item4"
+        "item6 1fr"
+        "item5 item5";
+    }
+
+
+    .shop-now-btn {
+        font-size: 3vw;
+        padding: 2vw 3vw;
+    }
+
+    .coupon-item a {
+        margin: 1vw;
+    }
+
+    .detail-btn {
+        font-size: 12px;
+    }
+
+    .sss-container {
+        display: grid;
+        grid-template-areas: 
+            "item1 item3"
+            "item2 item3"
+            "item4 item5"
+            "item4 item6";
+    }
+
+    .addon-deal .section-header p {
+        font-size: 1.2rem;
+    }
+
+    .hr-container {
+        grid-template-areas: 
+            "item1 item2 item3"
+            "item4 item4 item6"
+            "item4 item4 item7"
+            "item5 item5 item7";
+    }
+
+    .suncare-promo .btn-see-all {
+        font-size: 4.2vw;
+    }
+
+    .suncare-promo .section-subheader {
+        padding: 5% 0 10%;
+    }
+
+    .suncare-promo .section-title-image img {
+        max-width: 36%;
+    }
+
+    .suncare-promo, .summer-style-sale, .hot-recommend, .promo-mens-style, .promo-womens-style, .promo-travel-discount, .promo-style-sale, .addon-deal, .brand-highlights, .event-highlights {
+        padding: 30px 0;
+    }
+
+    .promo-travel-discount .ptd-item, .hr-container .hr-item, .sp-container .sp-item, .sss-container .sss-item {
+        border-radius: 8vw;
+    }
+
+    .sss-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sp-container {
+        grid-template-columns: repeat(2, 1fr); /* 四欄 */
+    }
+
+    .ptd-container {
+        display: grid;
+        grid-template-areas: 
+            "item1 item2"
+            "item1 item3"
+            "item4 item6"
+            "item5 item7";
+    }
+
+    .brand-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .brand-title {
+        font-size: 24px;
+    }
+
+    .brand-desc {
+        font-size: 16px;
+    }
+
+    .event-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .event-content {
+        padding: 15px;
+    }
+
+    .event-title {
+        font-size: 16px;
+    }
+
+    .event-subtitle {
+        font-size: 12px;
+        margin-bottom: 12px;
+    }
+
+    .event-cta {
+        padding: 6px 15px;
+        font-size: 12px;
+    }
+
+}
+
+
+@media screen and (max-width: 480px) {
+   
+    .section-header {
+        margin-bottom: 5px;
+    }
+
+    .section-header img {
+        padding: 0;
+    }
+
+    .coupon-item.item1, .coupon-item.item2, .coupon-item.item3, .coupon-item.item4, .coupon-item.item5, .coupon-item.item6{
+        border-radius: 10vw;
+    }
+
+    .coupon-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .coupon-item a {
+        font-size: 2.6vw;
+        margin: 0.6vw;
+    }
+
+    .product-grid {
+        padding: 5vw;
+    }
+
+    .promo-womens-style, .summer-style-sale, .promo-mens-style, .hot-recommend, .brand-highlights, .addon-deal, .event-highlights {
+        padding: 30px 0;
+    }
+    
+    .coupon-container, .sp-container, .sss-container, .hr-container, .pms-container.active, .pws-container.active, .ptd-container, .add-container {
+        gap: 8px;
+    }
+    
+    .add-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .add-container .shop-now-btn {
+        font-size: 5vw;
+        min-height: 3.6rem;
+        padding: 1vw 0;
+    }
+
+    .addon-deal .section-header p {
+        font-size: 3.6vw;
+    }
+
+    .brand-title {
+        font-size: 4.6vw;
+    }
+
+    .brand-desc {
+        font-size: 3.6vw;
+    }
+
+    .brand-item:nth-child(8)::before {
+        font-size: 2.6vw;
+        top: 3vw;
+        right: -10vw;
+        padding: 1.5vw 10vw
+    }
+
+    .brand-item:nth-child(3)::before, .brand-item:nth-child(4)::before, .brand-item:nth-child(5)::before, .brand-item:nth-child(11)::before {
+        top: 3vw;
+        right: -6vw;
+        padding: 1.5vw 6vw;
+        font-size: 2.5vw;
+    }
+    
+}

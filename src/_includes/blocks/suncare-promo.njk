@@ -1,0 +1,27 @@
+{% set block = suncarepromo %}
+<section id="suncare-promo" class="suncare-promo">
+    <div class="section-header">
+        <img src="{{ block.titleImage }}" alt="{{ block.titleAlt }}">
+    </div>
+    <div class="product-grid">
+        {% for category in block.categories %}
+            <div class="section-subheader">
+                <div class="section-title-image">
+                    <img src="{{ category.subtitleImage }}" alt="{{ category.subtitleAlt }}">
+                </div>
+                <a id="{{ category.trackingId }}" href="{{ category.seeAllLink }}" class="btn-see-all" target="_blank">SEE ALL</a>
+            </div>
+            <div class="sp-container">
+                {% for item in category.items %}
+                    <div class="sp-item">
+                        <a id="{{ item.id }}" href="{{ item.link }}" target="_blank">
+                            <div class="product-content">
+                                <img src="{{ item.image }}" alt="{{ item.alt }}">
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

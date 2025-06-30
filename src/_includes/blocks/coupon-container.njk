@@ -1,0 +1,31 @@
+{% set block = couponcontainer %}
+<section id="ev-618shopping" class="ev-618shopping">
+    <div class="coupon-container">
+        {% for coupon in block.coupons %}
+            <div class="coupon-item {{ coupon.itemClass }}">
+                {# 處理 item5 的特殊情況 #}
+                {% if coupon.contentImageDesktop and coupon.contentImageMobile %}
+                    <div class="coupon-images desktop">
+                        <img src="{{ coupon.contentImageDesktop }}" alt="">
+                    </div>
+                    <div class="coupon-images mobile">
+                        <img src="{{ coupon.contentImageMobile }}" alt="">
+                    </div>
+                {% else %}
+                    {# 處理其他正常 coupon 的情況 #}
+                    <div class="coupon-images">
+                        {% if coupon.headerImage %}
+                            <img src="{{ coupon.headerImage }}" alt="">
+                        {% endif %}
+                        <img src="{{ coupon.contentImage }}" alt="">
+                    </div>
+                {% endif %}
+                
+                <div class="coupon-buttons">
+                    <a id="{{ coupon.trackingId_shop }}" href="{{ coupon.shopLink }}" target="_blank" class="shop-now-btn">SHOP NOW</a>
+                    <a id="{{ coupon.trackingId_detail }}" href="#{{ coupon.popupId }}" class="modal-btn detail-btn">活動詳情</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

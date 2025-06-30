@@ -1,0 +1,515 @@
+/***** popup's controler *****/
+
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transition: opacity 200ms;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.overlay:target {
+	visibility: visible;
+	opacity: 1;
+}
+/***** popup's appearance *****/
+
+/* Modal */
+.pop-modal {
+	background-color: rgba(0, 0, 0, 0.6);
+	display: none;
+	overflow: auto;
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding-top: 10%;
+}
+
+/* Modal Content */
+.modal-content {
+	position: relative;
+	top: 0px;
+	width: 800px;
+	margin: 0 auto;
+}
+
+.modal-animated-in {
+	animation: totop-in .3s ease;
+}
+
+.modal-animated-out {
+	animation: totop-out .3s ease forwards;
+}
+
+.modal-header {
+	background: var(--black);
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.modal-content .close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, .2);
+	width: 60px;
+	height: 60px;
+	color: var(--white);
+	line-height: 60px;
+	text-align: center;
+	cursor: pointer;
+	transition: all .3s;
+}
+
+.modal-content .close:hover {
+	color: var(--white);
+}
+
+.modal-header h3 {
+	color: var(--white);
+	font-weight: bolder;
+	font-size: 1.5rem;
+	letter-spacing: 0.1rem;
+}
+
+/* Modal Body */
+.modal-body {
+	padding: 2rem;
+	line-height: 2rem;
+	color: var(--black);
+	background-color: var(--white);
+}
+
+.modal-body h3 {
+	font-size: 18px;
+}
+
+.modal-body-inner {
+	overflow-y: auto;
+	height: 350px;
+	padding: 0 1rem 0 0;
+}
+
+.modal-body-inner hr {
+	width: 97%;
+}
+
+.modal-body-inner h3 {
+	margin-bottom: 5px;
+}
+
+.modal-body-inner::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+.modal-body-inner::-webkit-scrollbar {
+	width: 5px;
+	background-color: var(--black);
+}
+
+.modal-body-inner::-webkit-scrollbar-thumb {
+	background-color: var(--black);
+}
+
+.modal-body ul, .modal-body ol {
+	margin: 1rem 0;
+	list-style: none;
+}
+
+.modal-body li{
+	padding: 0.25rem 0;
+}
+
+.modal-body ol li{
+	position: relative;
+	margin-left: 2rem;
+	list-style-type: decimal-leading-zero;
+}
+
+.modal-body ol li a{
+	text-decoration: underline;
+	letter-spacing: normal;
+	font-weight: bold;
+	color: var(--black);
+}
+
+.modal-body ul li {
+	font-size: 1rem;
+	line-height: 1.8;
+	font-weight: 100;
+	position: relative;
+	margin-left: 30px;
+	list-style-type: disc;
+	padding: 0;
+}
+
+.modal-body .link{
+	color: var(--black);
+	text-decoration:underline;
+}
+
+.modal-body-text-wrap {
+	margin-bottom: 20px;
+}
+
+.modal-body-text {
+	letter-spacing: 0.05rem;
+	font-size: large;
+}
+
+.modal-body-text-center{
+	font-size: x-large;
+	text-align: center;
+	display: flex;
+	justify-content: center; /* 水平居中 */
+	align-items: center; /* 垂直居中 */
+	height: 280px; 
+}
+
+.modal-body-text-center p{
+	margin: 0.75rem;
+}
+
+.modal-body-text-wrap span{
+	font-weight: bold; 
+    color: var(--secondary-red);
+    font-size: 1.8rem;
+    font-weight: 600;
+	margin: 1vh 0;
+}
+
+.modal-body-text-center > div{
+	cursor: pointer;
+}
+
+.modal-body-text-wrap h1{
+	text-align: center;
+	font-weight: bold; 
+    color: var(--black);
+    font-size: 1.5rem;
+    font-weight: 600;
+	line-height: 1.6;
+	margin: 1vh 0;
+}
+
+.modal-body-text-wrap h2{
+    color: var(--black);
+    font-size: 1.8rem;
+	line-height: 1.5;
+	letter-spacing: 0;
+    font-weight: bolder;
+}
+
+.modal-body-text-wrap h3{
+    color: var(--gold);
+	width: fit-content;
+    font-size: 1.5rem;
+    font-weight: 500;
+	letter-spacing: 0.05rem;
+	margin: 1rem 0;
+}
+
+.modal-body-text-wrap h4 {
+	font-size: 1.3rem;
+	margin: 1rem 0;
+}
+
+.modal-body-text-wrap h5 {
+    color: var(--secondary-gray);
+    font-size: 1rem;
+	line-height: 1.5;
+    font-weight: lighter;
+	margin: 1.2rem 0;
+}
+
+.modal-body-text-wrap p{
+	font-size: 18px;
+	letter-spacing: 1px;
+	text-align: center;
+	line-height: 1.5;
+	color: var(--secondary-gray);
+}
+
+.modal-body-btn {
+	background-color: var(--black);
+	color: var(--white);
+	margin: 20px auto;
+	width: fit-content;
+    padding: 10px 30px;
+    border-radius: 100px;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Modal Footer */
+.modal-footer {
+	background-color: var(--black);
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	padding-left: 20px;
+}
+
+.menu {
+	right: 1%;
+	bottom: 12%;
+	position: fixed;
+	z-index: 29;
+}
+
+.menu__style {
+	white-space: nowrap;
+	padding: 5%;
+    background-color: var(--white);
+    text-align: center;
+    border: 1px solid var(--black);
+	margin: 0;
+}
+
+.menu ul li {
+    font-weight: 500;
+    padding: 1rem 0;
+    width: 100%;
+    letter-spacing: 1px;
+    font-size: 2vh;
+    display: block;
+}
+
+.menu ul li:not(:last-child) {
+    border-bottom: 1px solid var(--black);
+}
+
+.menu a{
+	color: var(--black);	
+	text-decoration: none;
+}
+
+.menu ul li:hover {
+    color: var(--black);
+}
+
+/* hide sidenav 黏人精*/
+
+.menu > img {
+	max-width: fit-content;
+	padding: 0;
+}
+
+#sidebar {
+	transition: all 300ms linear;
+}
+
+#sidebar.active {
+	right: -800px;
+}
+
+#sidebar .toggle-btn {
+    position: fixed;
+    right: 0;
+    cursor: pointer;
+	border-radius: 0;
+    background-color: var(--black);
+}
+
+/* 收合導覽黏人精*/
+#sidebar .toggle-btn span {
+	font-size: 1.2rem;
+    display: block;
+    width: 30px;
+    color: var(--white);
+    margin: 1px 0px;
+    padding: 3px 5px 10px 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/*toTop*/
+.toTop-arrow {
+	width: 50px;
+    height: 50px;
+    border: 0;
+    border-radius: 50%;
+    opacity: 0.8;
+    background: var(--black);
+    color: var(--white);
+    cursor: pointer;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    padding-top: 10px;
+    z-index: 999;
+}
+
+.toTop-arrow::before, .toTop-arrow::after {
+	width: 8px;
+	height: 2px;
+	border-radius: 5px;
+	top: 12px;
+	background: var(--white);
+	position: absolute;
+	content: "";
+}
+
+.toTop-arrow::before {
+	transform: rotate(-45deg) translate(0, -50%);
+	left: 1.2rem;
+}
+
+.toTop-arrow::after {
+	transform: rotate(45deg) translate(0, -50%);
+	right: 1.2rem;
+}
+
+.toTop-arrow:focus {
+	outline: none;
+}
+
+@media (max-width:1024PX) {
+	.modal-content{
+		width: 75%;
+	}
+	.modal-body-text-wrap h3 {
+		margin: 0.5rem 0;
+	}
+}
+
+@media (max-width:768px) {
+	.modal-content{
+		width: 90%;
+	}
+
+	.modal-body ol li{
+		font-size: 0.8rem;
+		line-height: 1.6;
+	}
+
+	.modal-body ol h2{
+		font-size: 1.3rem;
+	}
+
+	.modal-body {
+		padding: 2rem;
+	}
+
+	.modal-header {
+		height: 40px;
+		line-height: 40px;
+		padding-left: 10px;
+	}
+
+	.modal-content .close {
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+	}
+
+	.modal-body-text-wrap > div {
+		padding: 0;
+	}
+
+	.modal-header h3 {
+		font-size: 3vw;
+	}
+
+	.modal-body-text-wrap h1 {
+		font-size: 1.2rem;
+		line-height: 1.2;
+	}
+
+	.modal-body-text-wrap h2 {
+		font-size: 1.6rem;
+	}
+
+	.modal-body-text-wrap h3 {
+		font-size: 1.3rem;
+	}
+
+	.modal-body-text-wrap h5 {
+		font-size: 0.8rem;
+	}
+
+	.modal-body-text-wrap span {
+		font-size: 1.3rem;
+	}
+
+	.modal-body-text-wrap p {
+		font-size: 0.8rem;
+	}
+
+	.modal-body-btn {
+		width: fit-content;
+		padding: 1vw 8vw;
+		margin: 5vw auto;
+		border-radius: 25px;
+		font-size: 1rem;
+	}
+
+	.menu {
+		max-width: 100%;
+		bottom: 0%;
+		right: 0;
+	}
+
+	.menu > img {
+		max-width: 23%;
+		padding: 0;
+		opacity: 0.9;
+	}
+
+	.menu__style {
+		white-space: inherit;
+		padding: 1% 4% 1.5% 1%;
+	}
+
+	.menu ul li {
+		padding: 2px 8px;
+		font-size: 0.95rem;
+		line-height: 2.1rem;
+		width: auto;
+		display: inline-block;
+		border-bottom: 1px solid var(--black);
+	}
+
+	.menu ul li:hover {
+		color: var(--black);
+	}
+
+	#sidebar .toggle-btn{
+		bottom: 0px;
+	}
+
+	/* 收合導覽黏人精*/
+	#sidebar .toggle-btn span {
+		font-size: 1rem;
+	}
+
+	.toTop-arrow{
+		bottom: 20%;
+	}
+}
+
+@media (max-width:510px) {
+	.menu > img {
+		max-width: 30%;
+		padding: 0;
+	}
+
+	.menu__style {
+		padding: 2vw 5vw;
+	}
+	
+	.menu ul li {
+		font-size: 0.9em;
+		line-height: 2.1em;
+	}
+}

@@ -1,0 +1,18 @@
+{% set block = addondeal %}
+<section id="addon-deal" class="addon-deal">
+    <div class="section-header">
+        <img src="{{ block.titleImage }}" alt="{{ block.titleAlt }}">
+        <p>{{ block.description }}</p>
+    </div>
+    <div class="product-grid">
+        <div class="add-container">
+            {% for item in block.items %}
+                <div class="add-item">
+                    <a id="{{ item.id }}" target="_blank" href="{{ item.link }}">
+                        <img src="{{ item.image }}" alt="{{ item.alt }}">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,32 @@
+{# 
+  將全域數據 summerstylesale 賦值給一個局部變數 'block'，
+  這樣模板內部的程式碼更簡潔。
+#}
+{% set block = summerstylesale %}
+
+<section id="summer-style-sale" class="summer-style-sale">
+    <div class="section-header">
+        <img src="{{ block.titleImage }}" alt="{{ block.titleAlt }}">
+    </div>
+    <div class="product-grid">
+        <div class="sss-container">
+            {# 遍歷商品列表 #}
+            {% for item in block.items %}
+                {# item.gridArea 會動態地加上 item1, item2 等 class #}
+                <div class="sss-item {{ item.gridArea }}">
+                    <a id="{{ item.id }}" target="_blank" href="{{ item.link }}">
+                        <img src="{{ item.image }}" alt="{{ item.alt }}">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="more-products">
+        {# 遍歷按鈕列表 #}
+        {% for button in block.moreButtons %}
+            <a id="{{ button.id }}" class="more-button" href="{{ button.link }}" target="_blank">
+                {{ button.text }}<span>{{ button.highlight }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</section>

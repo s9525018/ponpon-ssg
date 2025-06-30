@@ -1,0 +1,21 @@
+{% set block = eventhighlights %}
+<section id="event-highlights" class="event-highlights">
+    <div class="section-header">
+        <img src="{{ block.titleImage }}" alt="{{ block.titleAlt }}">
+    </div>
+    <div class="event-grid">
+        {% for event in block.events %}
+            <div class="event-card">
+                <div class="event-image">
+                    <img src="{{ event.image }}" alt="{{ event.alt }}">
+                </div>
+                <div class="event-content">
+                    <h4 class="event-title">{{ event.title }}</h4>
+                    {# 使用 Nunjucks 的 'safe' 過濾器來正確渲染 <br> 標籤 #}
+                    <p class="event-subtitle">{{ event.subtitle | safe }}</p>
+                    <a id="{{ event.trackingId }}" target="_blank" href="{{ event.link }}" class="event-cta">看更多</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

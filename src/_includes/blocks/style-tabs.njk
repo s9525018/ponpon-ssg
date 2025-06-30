@@ -1,0 +1,42 @@
+{% set tabs = styletabs %}
+
+<section class="promo-mens-style">
+    <div class="men-tab-group">
+        {# 生成男裝 Tab 按鈕，預設為 active #}
+        <button class="men-tab active" data-target="{{ tabs.men.containerId }}">{{ tabs.men.tabText }}</button>
+        
+        {# 生成女裝 Tab 按鈕 #}
+        <button class="men-tab" data-target="{{ tabs.women.containerId }}">{{ tabs.women.tabText }}</button>
+    </div>
+
+    <div class="product-grid">
+        {# 
+          男裝內容面板 (pms-container)
+          預設顯示，所以 class 包含 active
+        #}
+        <div id="{{ tabs.men.containerId }}" class="pms-container active">
+            {% for item in tabs.men.items %}
+                <div class="pms-item {{ item.itemClass }}">
+                    <a href="#">
+                        <img src="{{ item.image }}" alt="">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        {# 
+          女裝內容面板 (pws-container)
+          在你的 CSS 中，pws-container 預設是 display: none，所以我們不需要 active class
+          但我們沿用 pms-container 的 class 讓 JS 可以控制它
+        #}
+        <div id="{{ tabs.women.containerId }}" class="pws-container">
+             {% for item in tabs.women.items %}
+                <div class="pws-item {{ item.itemClass }}">
+                    <a href="#">
+                        <img src="{{ item.image }}" alt="">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
