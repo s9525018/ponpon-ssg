@@ -1,29 +1,52 @@
-// src/_data/ponponData.js
-const EleventyFetch = require("@11ty/eleventy-fetch");
+// 【最終修正版】 - 修正了資料結構層級問題，並加入了快取與錯誤處理
+const { EleventyFetch } = require("@11ty/eleventy-fetch");
 
-// 你的 API 網址，已確認
-const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLhLQSSt7uAgsBnMQo6vttXtfUst_0i3iwCK7U7pAMP5kj0dcfK_RC35B3d-JbArXPbNEHkajm7ZdDFP8qFaEZkaKTP2kSda2Exbew0f-QW-Ej9QnjONxo3WLo75_i9GaJIF3jqyE5ZPAlNd7EYDVuT0tRZTIN7_D7lxrKlhKJort16LeFjqKgBIkBai93J3XmuxcTWKzHY9FmhblUs2QLEcWGWNcl0Ei6D1zm_CZTLSRSiAcIP40cbD9ccQumTxzkKztTWuRgLcso6LY_68JJXjHQnUIg&lib=M-kU93n5tzwcL2V2_poFr-ARb25tth-fC";
+// 這是您的 Google Sheet API 網址
+const API_URL = "https://script.google.com/macros/s/AKfycbxifDQhdb2yurGSyc3qptMGtzUSwheeJatauVvFD1rFxaAZDbTCDcbZbi1E9tWMeb/exec";
+
+// 這是一個輔助函式，用來將從 Google Sheet 抓來的陣列資料，轉換成我們需要的物件結構
+function transformData(data) {
+    const transformed = {};
+    if (data && data.pagecontent) {
+        data.pagecontent.forEach(item => {
+            const blockKey = item.block_id.replace(/-/g, ''); // e.g., "coupon-container" -> "couponcontainer"
+            if (!transformed[blockKey]) {
+                transformed[blockKey] = [];
+            }
+            transformed[blockKey].push(item);
+        });
+    }
+    return transformed;
+}
+
 
 module.exports = async function() {
-  console.log("🚀 Fetching data from Google Sheets API...");
+    console.log("🚀 [v3] Starting to fetch data from Google Sheets API...");
 
-  try {
-    const ponponData = await EleventyFetch(API_URL, {
-      duration: "0s", //  暫時設為 0 秒，確保每次都抓取最新數據，方便除錯
-      type: "json",
-      verbose: true // 顯示詳細日誌
-    });
+    try {
+        // 使用 EleventyFetch 抓取原始資料
+        let rawData = await EleventyFetch(API_URL, {
+            duration: "6h", // 快取資料 6 小時。測試時可改為 "1m" (1分鐘)
+            type: "json",   // 我們期待的資料類型是 JSON
+            verbose: true   // 在終端機顯示詳細的 fetch 過程，方便除錯
+        });
 
-    console.log("✅ Data fetched successfully!");
+        // 【最關鍵的修正】
+        // 對抓取到的原始資料進行結構轉換
+        let processedData = transformData(rawData);
 
-    // 【新增的監視器】讓我們看看準備回傳的資料長什麼樣子
-    console.log("--- Data being returned to Eleventy: ---");
-    console.log(JSON.stringify(ponponData, null, 2)); // 打印出漂亮格式的JSON
-    
-    return ponponData;
+        console.log("✅ [v3] Successfully fetched and transformed data.");
+        // 返回經過處理、符合模板結構的資料
+        return processedData;
 
-  } catch (error) {
-    console.error("❌ Error fetching data from Google Sheets API:", error);
-    return {};
-  }
+    } catch (e) {
+        console.error("❌❌❌ [v3] ERROR fetching or transforming data ❌❌❌");
+        console.error(e);
+
+        // 在發生錯誤時，回傳一個帶有錯誤訊息的物件
+        return {
+            error: "Failed to fetch data from Google Sheets API.",
+            details: e.message
+        };
+    }
 };
