@@ -1,16 +1,20 @@
 module.exports = function(eleventyConfig) {
-  
-  // Passthrough Copy: 將 src/css, src/js, src/images 複製到輸出的 _site 資料夾
-  eleventyConfig.addPassthroughCopy("./src/css");
-  eleventyConfig.addPassthroughCopy("./src/js");
-  eleventyConfig.addPassthroughCopy("./src/images");
+  // 這句話是告訴 Eleventy，所有圖片、CSS 等靜態檔案，
+  // 都要從 src/assets 複製到最終的 _site/assets 資料夾。
+  // 即使您現在沒有 assets 資料夾，加上這行也是一個好的實踐。
+  eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/css");
+  eleventyConfig.addPassthroughCopy("src/js");
 
-  // 返回設定，以便 Eleventy 知道我們的源文件在哪裡
+  // 【最最最關鍵的一行設定】
+  // 這句話明確地告訴 Eleventy：
+  // "你的所有輸入檔案（模板、數據、組件）都在 src 資料夾裡找！"
   return {
     dir: {
-      input: "src",      // 源文件夾
-      output: "_site",   // 輸出文件夾
-      includes: "_includes" // 可重用組件文件夾 (下一步會用到)
+      input: "src",
+      output: "_site",
+      includes: "_includes",
+      data: "_data"
     }
   };
 };
