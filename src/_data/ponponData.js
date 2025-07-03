@@ -1,8 +1,6 @@
-// 【v9 正式版】 - 使用了正確的 API 網址，並恢復了網路抓取
-const EleventyFetch = require("@11ty/eleventy-fetch");
+// 【v10 終極純淨版】 - 只包含最基礎的資料轉換和寫死的、經過驗證的 JS 物件
 
-const API_URL = "https://script.google.com/macros/s/AKfycbzTiDQHbZytuY2vSpRC3qstMG2c0whIeeJtauDU4eVzFD1rReA2TbDCoZ0b1HEG9MBh/exec";
-
+// 輔助函式
 function transformData(data) {
     const transformed = {};
     if (data && data.pagecontent) {
@@ -19,20 +17,20 @@ function transformData(data) {
     return transformed;
 }
 
-module.exports = async function() {
-    console.log("🚀 [v9] Starting to fetch data with correct input dir config...");
-    try {
-        let rawData = await EleventyFetch(API_URL, {
-            duration: "6h",
-            type: "json",
-            verbose: true
-        });
-        let processedData = transformData(rawData);
-        console.log("✅ [v9] Successfully fetched and transformed data.");
-        return processedData;
-    } catch (e) {
-        console.error("❌❌❌ [v9] ERROR fetching data ❌❌❌");
-        console.error(e);
-        return { error: "Failed to fetch data.", details: e.message };
-    }
+module.exports = function() {
+    console.log("🚀 [v10 Clean Slate] Using purest hardcoded JS object.");
+
+    // 直接定義一個絕對乾淨、合法的 JavaScript 物件
+    const rawData = {
+        "pagelayout": [{"block_id": "eventhighlights", "is_enabled": true}],
+        "pagecontent": [
+            {"block_id": "eventhighlights", "group_id": "phase1", "type": "kv-grid", "title": "【測試標題】滿$8,000 折$400", "key1": "7/1 - 8/31", "key2": "#", "key3": "", "key4": "活動辦法", "order": 1},
+            {"block_id": "eventhighlights", "group_id": "phase1", "type": "sidebar-link", "title": "【測試連結】全館折扣優惠", "key1": null, "key2": "#", "key3": null, "key4": null, "order": 1}
+        ]
+    };
+
+    // 執行資料轉換
+    let processedData = transformData(rawData);
+    console.log("✅ [v10 Clean Slate] Data processed. Returning:", Object.keys(processedData));
+    return processedData;
 };
